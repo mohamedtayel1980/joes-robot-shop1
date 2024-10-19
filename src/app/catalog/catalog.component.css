@@ -80,3 +80,7 @@
   a {
    font-weight: bold;
   }
+  .strikethrough{
+    text-decoration: line-through;
+    font-size: 18 px;
+  }
