@@ -9,7 +9,7 @@ import { IProduct } from './product.model';
 export class CatalogComponent {
   products:IProduct[];
   filter:string =''
-cart: IProduct[]=[];
+ 
   constructor() {
     this.products =  [
       {
@@ -189,18 +189,11 @@ cart: IProduct[]=[];
     ];
   } 
 
-  addToCart(product:IProduct){
-   this.cart.push(product);
-   console.log(`product ${product.name} added to cart  `);
-  }
+
   getFilterdProducts(){
     return this.filter===''
     ?this.products
     :this.products.filter((product)=>product.category===this.filter);
   }
-  getDiscountedClasses(product:IProduct){
-    if(product.discount>0) return ['strikethrough']
-    return [];
-
-  }
+  
 }

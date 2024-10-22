@@ -9,28 +9,7 @@
   
     <ul class="products">
       <li class="product-item" *ngFor="let product of getFilterdProducts()">
-        <div class="product">
-          <div class="product-details">
-            <img src="/assets/images/robot-parts/{{product?.imageName}}" alt="{{product.name}}" />
-            <div class="product-info">
-              <div class="name">{{product?.name}}</div>
-              <div class="description">{{product?.description}}</div>
-              <div class="category">Part Type: {{product?.category}}</div>
-            </div>
-          </div>
-          <div class="price">
-            <div   
-             [style.color]="product.discount>0 ?'red' :''"
-             [ngClass]="getDiscountedClasses(product)">  
-              {{product?.price ? (product.price | number:'1.2-2') : '0.00' | currency:'USD'}} 
-            </div>
-            
-            <div class="discount" *ngIf="product.discount > 0">
-              {{product?.price ? (product.price * (1 - product.discount) | number:'1.2-2') : '0.00' | currency:'USD'}}
-            </div>
-            <button class="cta" (click)="addToCart(product)">Buy</button>
-          </div>
-        </div>
+       <app-product-details [product]="product"></app-product-details>
       </li>
     </ul>
   </div>
