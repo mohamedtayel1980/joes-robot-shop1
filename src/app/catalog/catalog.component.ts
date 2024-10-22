@@ -9,7 +9,7 @@ import { IProduct } from './product.model';
 export class CatalogComponent {
   products:IProduct[];
   filter:string =''
- 
+  cart: IProduct[]=[];
   constructor() {
     this.products =  [
       {
@@ -189,7 +189,19 @@ export class CatalogComponent {
     ];
   } 
 
-
+  /*addToCart(product:IProduct){
+    this.cart.push(product);
+    console.log(`product ${product.name} added to cart  `);
+   }*/
+    addToCart(product: IProduct) {
+      const isAlreadyInCart = this.cart.some(item => item.id === product.id);
+      if (!isAlreadyInCart) {
+        this.cart.push(product);
+        console.log(`Product "${product.name}" added to cart.`);
+      } else {
+        console.log(`Product "${product.name}" is already in the cart.`);
+      }
+    }
   getFilterdProducts(){
     return this.filter===''
     ?this.products
