@@ -10,8 +10,8 @@ import { CartService } from '../cart.service';
 export class CatalogComponent {
   products:IProduct[];
   filter:string =''
-  private cartSVC:CartService=inject(CartService);
-  constructor() {
+  //private cartSVC:CartService=inject(CartService);
+  constructor(private cartSVC:CartService) {
     this.products =  [
       {
         id: 1,
