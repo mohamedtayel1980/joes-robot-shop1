@@ -63,7 +63,8 @@
               "buildTarget": "joes-robot-shop1:build:production"
             },
             "development": {
-              "buildTarget": "joes-robot-shop1:build:development"
+              "buildTarget": "joes-robot-shop1:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
