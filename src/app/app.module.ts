@@ -5,7 +5,8 @@ import { HomeComponent } from './home/home.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { SiteHeaderComponent } from './site-header/site-header.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-
+import { provideHttpClient } from '@angular/common/http';
+//import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,9 +16,13 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     ProductDetailsComponent
   ],
   imports: [
-    BrowserModule  // Import necessary Angular modules
+    BrowserModule 
+    
   ],
-  providers: [],
+  
+  providers: [
+    provideHttpClient() // Use this instead of HttpClientModule
+  ],
   bootstrap: [AppComponent]  // Bootstrap the AppComponent
 })
 export class AppModule { }
