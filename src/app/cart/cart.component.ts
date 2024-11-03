@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../catalog/product.model';
 import { CartService } from './cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +10,9 @@ import { CartService } from './cart.service';
 })
 export class CartComponent implements OnInit {
   private cart: IProduct[] = [];
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService
+    ,  private router:Router
+  ) { }
 
   ngOnInit() {
     this.cartService.getCart().subscribe({
@@ -30,6 +33,7 @@ export class CartComponent implements OnInit {
 
   removeFromCart(product: IProduct) {
     this.cartService.remove(product);
+    this.router.navigate(['/catalog']);
   }
 
   getImageUrl(product: IProduct) {

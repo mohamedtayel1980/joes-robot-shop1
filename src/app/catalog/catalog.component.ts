@@ -3,6 +3,7 @@ import { IProduct } from './product.model';
 
 import { ProductService } from './product.service';
 import { CartService } from '../cart/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalog',
@@ -13,7 +14,10 @@ export class CatalogComponent {
   products:any;
   filter:string =''
   //private cartSVC:CartService=inject(CartService);
-  constructor(private cartSVC:CartService,private ProdcutSVC:ProductService) {
+  constructor(
+    private cartSVC:CartService,
+    private ProdcutSVC:ProductService,
+  private router:Router) {
    
   } 
    ngOnInit(){
@@ -29,6 +33,7 @@ export class CatalogComponent {
    }*/
     addToCart(product: IProduct) {
       this.cartSVC.add(product);
+      this.router.navigate(['/cart']);
     }
   getFilterdProducts(){
     return this.filter===''
