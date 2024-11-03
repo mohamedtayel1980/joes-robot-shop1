@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { IProduct } from './product.model';
-import { CartService } from '../cart.service';
+
 import { ProductService } from './product.service';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-catalog',

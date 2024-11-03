@@ -6,6 +6,8 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { SiteHeaderComponent } from './site-header/site-header.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { provideHttpClient } from '@angular/common/http';
+import { CartComponent } from './cart/cart.component';
+import { AppRoutingModule } from './app-routing.module';
 //import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
@@ -13,10 +15,12 @@ import { provideHttpClient } from '@angular/common/http';
     HomeComponent,
     CatalogComponent,
     SiteHeaderComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartComponent
   ],
   imports: [
-    BrowserModule 
+    BrowserModule,
+    AppRoutingModule 
     
   ],
   
