@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IUserCredentials } from '../user.model';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,6 +11,19 @@ import { IUserCredentials } from '../user.model';
 export class SignInComponent {
 credentials:IUserCredentials={email:'',password:''};
 
-  constructor() { }
+  constructor(private userService:UserService,private router:Router) { }
 
+
+  signIn() {
+    console.log('Sign-in credentials:', this.credentials);
+    this.userService.signIn(this.credentials).subscribe({
+      next: () => {
+        console.log('Sign-in successful');
+        this.router.navigate(['/catalog']);
+      },
+      error: (err) => console.error('Sign-in failed:', err)
+    });
+  }
 }
+
+

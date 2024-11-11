@@ -21,6 +21,12 @@ const users = {
     email: "joe@joesrobotshop.com",
     password: "super-secret",
   },
+  "tayel@joesrobotshop.com": {
+    firstName: "mohamed",
+    lastName: "tayel",
+    email: "tayel@joesrobotshop.com",
+    password: "super-1234",
+  },
 };
 let cart = [];
 
@@ -236,7 +242,7 @@ app.post("/api/register", (req, res) =>
     practices. In a production application user credentials would be cryptographically 
     stored in a database server and the password should NEVER be stored as plain text. 
 */
-app.post("/api/sign-in", (req, res) => {
+/* app.post("/api/sign-in", (req, res) => {
   const user = users[req.body.email];
   if (user && user.password === req.body.password) {
     res.status(200).send({
@@ -248,6 +254,20 @@ app.post("/api/sign-in", (req, res) => {
   } else {
     res.status(401).send("Invalid user credentials.");
   }
-});
+}); */
+app.post("/api/sign-in", (req, res) => {
+  console.log("Received credentials:", req.body); // Debugging log
 
+  const user = users[req.body.email];
+  if (user && user.password === req.body.password) {
+    res.status(200).send({     
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+    });
+  } else {
+    console.log("Invalid credentials for:", req.body.email); // Log invalid attempts
+    res.status(401).send("Invalid user credentials.");
+  }
+});
 app.listen(8081, () => console.log("API Server listening on port 8081!"));

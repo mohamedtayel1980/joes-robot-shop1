@@ -94,7 +94,10 @@ a:hover {
     border-radius: 5px;
     cursor: pointer;
   }
-  
+  .button:disabled {
+    background-color: #cccccc; /* Greyed-out button when disabled */
+    cursor: not-allowed;
+  }
   a.button {
     font-size: 15px;
     padding: 15px 25px;
