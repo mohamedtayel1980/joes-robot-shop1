@@ -19,6 +19,9 @@
       <button type="submit" class="button cta" [disabled]="!credentials.email || !credentials.password">
         Sign In
       </button>
+      <div class="signInError" *ngIf="signInError">
+       sigin falid plz try again
+      </div>
     </div>
   </form>
   

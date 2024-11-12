@@ -10,18 +10,22 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent {
 credentials:IUserCredentials={email:'',password:''};
-
+signInError:boolean=false;
   constructor(private userService:UserService,private router:Router) { }
 
 
   signIn() {
+    this.signInError=false;
     console.log('Sign-in credentials:', this.credentials);
     this.userService.signIn(this.credentials).subscribe({
       next: () => {
         console.log('Sign-in successful');
         this.router.navigate(['/catalog']);
       },
-      error: (err) => console.error('Sign-in failed:', err)
+      error: (err) => {
+        this.signInError=true;
+        console.error('Sign-in failed:', err);
+      }
     });
   }
 }
