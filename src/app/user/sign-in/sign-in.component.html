@@ -4,12 +4,13 @@
     <div class="sign-in">Sign In</div>
     <div class="sub-text">to acquire awesome bots</div>
     <input
-      name="email" required #email="ngModel"
+      name="email" required email  #email="ngModel"
       [(ngModel)]="credentials.email"
       placeholder="Email Address"
       type="text"
     />
-    <em class="error" *ngIf="email.invalid && email.touched">Email Is Requried</em>
+    <em class="error" *ngIf="email.errors?.['required'] && email.touched">Email Is Requried</em>
+    <em class="error" *ngIf="email.errors?.['email'] && email.touched">Email Is invalid Format</em>
     <input
       name="password" required #password="ngModel"
       [(ngModel)]="credentials.password"
